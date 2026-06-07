@@ -1,0 +1,45 @@
+[
+  {
+    "id": 1,
+    "date": "30 May 2025",
+    "time": "10:30 AM",
+    "agendaTitle": "Payment Gateway",
+    "agendaSubtitle": "Discussion",
+    "pointsCount": 8,
+    "preparedBy": {
+      "name": "Mohan",
+      "empId": "EMP1005",
+      "avatar": "https://i.pravatar.cc/150?u=a042581f4e29026704d"
+    },
+    "attendees": 5,
+    "attendeesList": [
+      "Kiran",
+      "Ravi Kumar",
+      "Ashwin",
+      "Lokesh",
+      "Mohan"
+    ],
+    "notes": "Discussed stripe integration."
+  },
+  {
+    "id": 2,
+    "date": "29 May 2025",
+    "time": "03:00 PM",
+    "agendaTitle": "POS Print Issue",
+    "agendaSubtitle": "Discussion",
+    "pointsCount": 6,
+    "preparedBy": {
+      "name": "Kiran",
+      "empId": "EMP1008",
+      "avatar": "https://i.pravatar.cc/150?img=11"
+    },
+    "attendees": 4,
+    "attendeesList": [
+      "Mahanandia",
+      "Harsh",
+      "Kiran",
+      "Lokesh"
+    ],
+    "notes": "POS printers not aligning."
+  }
+]

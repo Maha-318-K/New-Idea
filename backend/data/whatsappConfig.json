@@ -1,0 +1,82 @@
+{
+  "monitoredGroups": [],
+  "lastSyncTime": "2026-06-07T07:39:53.544Z",
+  "lastProcessedMessageTime": "2026-06-06T19:17:43.777Z",
+  "processedMessageIds": [],
+  "connectedDeviceId": "device_1780774864362",
+  "auditLogs": [
+    {
+      "date": "2026-06-06T19:03:46.689Z",
+      "action": "WhatsApp Connected. New Device ID: device_1780772626686",
+      "user": "System"
+    },
+    {
+      "date": "2026-06-06T19:06:30.407Z",
+      "action": "Issue Default Group configured to: 120363426766901654@g.us",
+      "user": "System"
+    },
+    {
+      "date": "2026-06-06T19:07:41.827Z",
+      "action": "Issue created and synced to group 120363426766901654@g.us: hai new issue found on logo change logo and when clcik on go...",
+      "user": "Current User"
+    },
+    {
+      "date": "2026-06-06T19:14:53.517Z",
+      "action": "Issue created and sent to group 120363426766901654@g.us: General",
+      "user": "Current User"
+    },
+    {
+      "date": "2026-06-06T19:17:01.615Z",
+      "action": "Issue created and sent to group 120363426766901654@g.us: General",
+      "user": "Current User"
+    },
+    {
+      "date": "2026-06-06T19:17:27.267Z",
+      "action": "Issue Default Group configured to: 120363428092815576@g.us",
+      "user": "System"
+    },
+    {
+      "date": "2026-06-06T19:17:43.793Z",
+      "action": "Issue created and sent to group 120363428092815576@g.us: General",
+      "user": "Current User"
+    },
+    {
+      "date": "2026-06-06T19:18:03.209Z",
+      "action": "Issue Default Group configured to: 120363426766901654@g.us",
+      "user": "System"
+    },
+    {
+      "date": "2026-06-06T19:18:11.832Z",
+      "action": "WhatsApp Disconnected manually",
+      "user": "System"
+    },
+    {
+      "date": "2026-06-06T19:41:04.373Z",
+      "action": "WhatsApp Connected. New Device ID: device_1780774864362",
+      "user": "System"
+    },
+    {
+      "date": "2026-06-06T19:42:01.598Z",
+      "action": "Document 'Sravani sister' sent to chat 120363425474618874@g.us",
+      "user": "Current User"
+    },
+    {
+      "date": "2026-06-07T02:32:22.946Z",
+      "action": "Document 'Sravani sister' sent to chat 120363425474618874@g.us",
+      "user": "Current User"
+    },
+    {
+      "date": "2026-06-07T06:25:56.763Z",
+      "action": "Issue Default Group configured to: 120363425474618874@g.us",
+      "user": "System"
+    },
+    {
+      "date": "2026-06-07T06:26:25.392Z",
+      "action": "Issue created and sent to group 120363425474618874@g.us: ssss",
+      "user": "Admin"
+    }
+  ],
+  "issueDefaultGroup": "120363425474618874@g.us",
+  "lastMessageSent": "2026-06-07T06:26:25.389Z",
+  "messagesSentCount": 7
+}

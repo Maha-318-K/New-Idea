@@ -1,0 +1,45 @@
+[
+  {
+    "id": "1780774409097",
+    "documentId": "DOC-1002",
+    "documentName": "Sravani sister",
+    "documentType": "Production Release Report",
+    "createdBy": "Current User",
+    "createdDate": "07 Jun 2026",
+    "generatedDate": "07 Jun 2026, 01:03",
+    "status": "Generated",
+    "filters": {
+      "requirements": {
+        "selected": true,
+        "from": "2026-06-01",
+        "to": "2026-06-30"
+      },
+      "mom": {
+        "selected": true,
+        "from": "2026-06-01",
+        "to": "2026-06-30"
+      },
+      "qaIssues": {
+        "selected": true,
+        "from": "2026-06-01",
+        "to": "2026-06-30"
+      },
+      "prodIssues": {
+        "selected": true,
+        "from": "2026-06-01",
+        "to": "2026-06-30"
+      }
+    }
+  },
+  {
+    "id": "1",
+    "documentId": "DOC-1001",
+    "documentName": "May Executive Summary",
+    "documentType": "Monthly Report",
+    "createdBy": "Mohananda",
+    "createdDate": "01 Jun 2025",
+    "generatedDate": "01 Jun 2025 10:00 AM",
+    "status": "Generated",
+    "filters": {}
+  }
+]

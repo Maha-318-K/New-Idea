@@ -1,0 +1,38 @@
+:root {
+  --bg-main: #0b0c10;
+  --bg-secondary: #111216;
+  --bg-tertiary: #1a1b23;
+  --bg-sidebar: linear-gradient(180deg, #1e3a8a 0%, #0f172a 100%);
+  --text-main: #ffffff;
+  --text-muted: #a0a3b1;
+  --sidebar-text: rgba(255, 255, 255, 0.7);
+  --sidebar-active-bg: rgba(255, 255, 255, 0.15);
+  --sidebar-active-text: #ffffff;
+  --border-color: #2a2c33;
+  --card-shadow: none;
+  --hover-bg: var(--border-light);
+  --border-light: var(--border-light);
+  --border-strong: var(--border-strong);
+  --input-bg: var(--input-bg);
+}
+
+[data-theme="light"] {
+  --bg-main: #f4f6f8;
+  --bg-secondary: #ffffff;
+  --bg-tertiary: #f3f4f6;
+  --bg-sidebar: #f8ab37;
+  --text-main: #000000;
+  --text-muted: #1f2937;
+  --sidebar-text: rgba(0, 0, 0, 0.75);
+  --sidebar-active-bg: rgba(0, 0, 0, 0.1);
+  --sidebar-active-text: #000000;
+  --border-color: #e5e7eb;
+  --card-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+  --hover-bg: rgba(0, 0, 0, 0.04);
+  --border-light: rgba(0, 0, 0, 0.05);
+  --border-strong: rgba(0, 0, 0, 0.1);
+  --input-bg: #f9fafb;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { margin: 0; background: var(--bg-main); color: var(--text-main); font-family: 'Inter', sans-serif; }

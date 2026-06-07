@@ -1,0 +1,16 @@
+[
+  {
+    "id": 1780813521620,
+    "name": "Atlanta Fence Company(AFC)",
+    "description": "Fence constructions",
+    "status": "Active",
+    "createdAt": "2026-06-07T06:25:21.620Z"
+  },
+  {
+    "id": 1,
+    "name": "Default Project",
+    "description": "Initial default project",
+    "status": "Active",
+    "createdAt": "2026-06-07T06:17:18.976Z"
+  }
+]

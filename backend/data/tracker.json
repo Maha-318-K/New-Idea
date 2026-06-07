@@ -1,0 +1,41 @@
+{
+  "trackerData": {
+    "1": [
+      {
+        "id": 1780817269756,
+        "pageName": "",
+        "issue": "",
+        "status": "Open",
+        "assignee": "",
+        "stagingDate": "",
+        "prodDate": ""
+      }
+    ]
+  },
+  "customColumns": {
+    "col1": "Page Name",
+    "col2": "Issue / Point",
+    "col3": "Status",
+    "col4": "Assignee",
+    "col5": "Staging Deployment",
+    "col6": "Production Deployment"
+  },
+  "customStatuses": [
+    {
+      "name": "Completed",
+      "color": "#22c55e"
+    },
+    {
+      "name": "In Progress",
+      "color": "#3b82f6"
+    },
+    {
+      "name": "Pending",
+      "color": "#eab308"
+    },
+    {
+      "name": "Open",
+      "color": "#f8ab37"
+    }
+  ]
+}

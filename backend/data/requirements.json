@@ -1,0 +1,57 @@
+[
+  {
+    "id": "REQ-2025-0086",
+    "title": "Add Bulk Upload for Product Images",
+    "module": "Inventory",
+    "description": "Users should be able to upload multiple product images at once using excel import.",
+    "priority": "High",
+    "status": "In Progress",
+    "requestedBy": "Ravi Kumar",
+    "requestedDate": "30 May 2025 11:45 AM",
+    "targetDate": "10 Jun 2025"
+  },
+  {
+    "id": "REQ-2025-0085",
+    "title": "Generate PDF Report with Filters",
+    "module": "Reports",
+    "description": "Allow users to generate PDF reports with applied filters.",
+    "priority": "Medium",
+    "status": "Under Review",
+    "requestedBy": "Sneha Reddy",
+    "requestedDate": "29 May 2025 04:20 PM",
+    "targetDate": "07 Jun 2025"
+  },
+  {
+    "id": "REQ-2025-0084",
+    "title": "Dashboard Data Refresh Issue",
+    "module": "Dashboard",
+    "description": "Dashboard data not auto refreshing after 30 mins.",
+    "priority": "High",
+    "status": "In Progress",
+    "requestedBy": "Anjali Mehta",
+    "requestedDate": "28 May 2025 12:10 PM",
+    "targetDate": "05 Jun 2025"
+  },
+  {
+    "id": "REQ-2025-0083",
+    "title": "Role Based Access Control",
+    "module": "Users & Roles",
+    "description": "Implement role based access for all modules.",
+    "priority": "High",
+    "status": "Approved",
+    "requestedBy": "Vikram Singh",
+    "requestedDate": "27 May 2025 09:15 AM",
+    "targetDate": "15 Jun 2025"
+  },
+  {
+    "id": "REQ-2025-0082",
+    "title": "Add Export to Excel Option",
+    "module": "Production Issues",
+    "description": "Provide option to export issues data to excel.",
+    "priority": "Low",
+    "status": "Approved",
+    "requestedBy": "Priya Nair",
+    "requestedDate": "26 May 2025 06:50 PM",
+    "targetDate": "02 Jun 2025"
+  }
+]

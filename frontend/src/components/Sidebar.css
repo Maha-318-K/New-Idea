@@ -1,0 +1,143 @@
+.sidebar {
+  width: 250px;
+  flex-shrink: 0;
+  background: var(--bg-sidebar);
+  border-right: 1px solid var(--border-color);
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  padding: 24px 0;
+  box-sizing: border-box;
+}
+
+.sidebar-brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 0 24px;
+  margin-bottom: 40px;
+}
+
+.sidebar-logo {
+  width: 32px;
+  height: 32px;
+  object-fit: contain;
+}
+
+.sidebar-brand-text {
+  display: flex;
+  flex-direction: column;
+}
+
+.sidebar-brand-text h1 {
+  margin: 0;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--sidebar-active-text, #fff);
+  line-height: 1;
+}
+
+.sidebar-brand-text span {
+  font-size: 0.6rem;
+  letter-spacing: 0.3em;
+  color: var(--sidebar-text, #fce7f3);
+  text-transform: uppercase;
+  margin-top: 2px;
+}
+
+.sidebar-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  flex: 1;
+  overflow-y: auto;
+  padding-bottom: 24px;
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+
+.sidebar-nav::-webkit-scrollbar {
+  display: none; /* Chrome, Safari and Opera */
+}
+
+.nav-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 0 12px;
+  padding: 12px 12px;
+  border-radius: 8px;
+  color: var(--sidebar-text);
+  text-decoration: none;
+  font-size: 0.95rem;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.nav-item:hover {
+  color: var(--sidebar-active-text, #fff);
+  background-color: var(--border-strong);
+}
+
+.nav-item.active {
+  background: var(--sidebar-active-bg);
+  color: var(--sidebar-active-text);
+}
+
+.nav-item.active svg {
+  color: var(--sidebar-active-text) !important;
+}
+
+.sidebar-footer {
+  padding: 0 24px;
+}
+
+.help-box {
+  background: var(--input-bg);
+  border: 1px solid var(--border-light);
+  border-radius: 12px;
+  padding: 16px;
+  margin-bottom: 24px;
+  text-align: left;
+}
+
+.help-box h4 {
+  margin: 0 0 4px 0;
+  color: var(--text-main);
+  font-size: 0.9rem;
+}
+
+.help-box p {
+  margin: 0 0 16px 0;
+  color: var(--text-muted);
+  font-size: 0.8rem;
+}
+
+.contact-btn {
+  background: transparent;
+  border: 1px solid rgba(248, 171, 55, 0.5);
+  color: #f8ab37;
+  border-radius: 6px;
+  padding: 8px 12px;
+  font-size: 0.8rem;
+  font-weight: 500;
+  width: 100%;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.contact-btn:hover {
+  background: rgba(248, 171, 55, 0.1);
+  border-color: #f8ab37;
+}
+
+.logout {
+  margin-bottom: 24px;
+}
+
+.copyright {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  text-align: center;
+}
