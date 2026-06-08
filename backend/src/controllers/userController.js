@@ -1,9 +1,24 @@
 const User = require('../models/userModel');
+const ActionLog = require('../models/actionLogModel');
+
+// Helper for logging actions
+const logAction = async (whoName, what, why) => {
+  try {
+    const log = new ActionLog({
+      who: whoName || 'System',
+      what: what,
+      why: why
+    });
+    await log.save();
+  } catch (error) {
+    console.error('Error logging action:', error);
+  }
+};
 
 // GET /api/v1/users
-const getUsers = (req, res) => {
+const getUsers = async (req, res) => {
   try {
-    const users = User.getAllUsers();
+    const users = await User.find().sort({ createdAt: -1 });
     res.status(200).json({
       success: true,
       count: users.length,
@@ -18,11 +33,10 @@ const getUsers = (req, res) => {
 };
 
 // POST /api/v1/users
-const createUser = (req, res) => {
+const createUser = async (req, res) => {
   try {
     const userData = req.body;
     
-    // Basic validation
     if (!userData.name || !userData.empId) {
       return res.status(400).json({
         success: false,
@@ -30,13 +44,19 @@ const createUser = (req, res) => {
       });
     }
 
-    const newUser = User.createUser(userData);
+    const newUser = new User(userData);
+    await newUser.save();
+
+    await logAction(userData.requestedBy || 'System', 'Created User', `Created new user ${newUser.name} (${newUser.empId})`);
 
     res.status(201).json({
       success: true,
       data: newUser
     });
   } catch (error) {
+    if (error.code === 11000) {
+      return res.status(400).json({ success: false, error: 'Employee ID already exists' });
+    }
     res.status(500).json({
       success: false,
       error: 'Server Error'
@@ -45,9 +65,9 @@ const createUser = (req, res) => {
 };
 
 // GET /api/v1/users/:id
-const getUserById = (req, res) => {
+const getUserById = async (req, res) => {
   try {
-    const user = User.getUserById(req.params.id);
+    const user = await User.findById(req.params.id);
     if (!user) {
       return res.status(404).json({ success: false, error: 'User not found' });
     }
@@ -58,57 +78,95 @@ const getUserById = (req, res) => {
 };
 
 // PUT /api/v1/users/:id
-const updateUser = (req, res) => {
+const updateUser = async (req, res) => {
   try {
-    const updatedUser = User.updateUser(req.params.id, req.body);
-    if (!updatedUser) {
+    const user = await User.findById(req.params.id);
+    if (!user) {
       return res.status(404).json({ success: false, error: 'User not found' });
     }
-    res.status(200).json({ success: true, data: updatedUser });
+
+    const oldData = user.toObject();
+    const updateData = req.body;
+
+    Object.assign(user, updateData);
+    await user.save();
+
+    // Determine what changed
+    const changedFields = [];
+    Object.keys(updateData).forEach(key => {
+      if (key !== '_id' && key !== 'requestedBy' && key !== 'requesterRole' && oldData[key] !== updateData[key]) {
+        changedFields.push(key);
+      }
+    });
+    const changeStr = changedFields.length > 0 ? `Changed ${changedFields.join(', ')}` : 'Updated details';
+
+    await logAction(updateData.requestedBy || 'Unknown', 'Updated User', `${changeStr} for ${user.name}`);
+    
+    res.status(200).json({ success: true, data: user });
   } catch (error) {
     res.status(500).json({ success: false, error: 'Server Error' });
   }
 };
 
 // PUT /api/v1/users/:id/status
-const updateUserStatus = (req, res) => {
+const updateUserStatus = async (req, res) => {
   try {
     const { status, requesterName } = req.body;
     if (!status) {
       return res.status(400).json({ success: false, error: 'Status is required' });
     }
-    const updatedUser = User.updateUserStatus(req.params.id, status, requesterName);
-    if (!updatedUser) {
+
+    const user = await User.findById(req.params.id);
+    if (!user) {
       return res.status(404).json({ success: false, error: 'User not found' });
     }
-    res.status(200).json({ success: true, data: updatedUser });
+
+    user.status = status;
+    await user.save();
+
+    await logAction(requesterName || 'Unknown', 'Updated Status', `Marked ${user.name} as ${status}`);
+
+    res.status(200).json({ success: true, data: user });
   } catch (error) {
     res.status(500).json({ success: false, error: 'Server Error' });
   }
 };
 
 // DELETE /api/v1/users/:id
-const deleteUser = (req, res) => {
+const deleteUser = async (req, res) => {
   try {
-    const { requesterRole, requesterName } = req.body; // In a real app, this comes from a JWT token
-    const result = User.deleteUser(req.params.id, requesterRole, requesterName);
+    const { requesterRole, requesterName } = req.body;
     
-    if (!result.success) {
-      // 403 Forbidden for RBAC failures, 404 for not found
-      const status = result.error === 'User not found' ? 404 : 403;
-      return res.status(status).json(result);
+    const targetUser = await User.findById(req.params.id);
+    if (!targetUser) {
+      return res.status(404).json({ success: false, error: 'User not found' });
     }
+
+    // RBAC Rules
+    if (requesterRole === 'User' || requesterRole === 'Employee') {
+      return res.status(403).json({ success: false, error: 'Users cannot delete other users.' });
+    }
+    if (requesterRole === 'Admin' && (targetUser.role === 'Admin' || targetUser.role === 'Super Admin')) {
+      return res.status(403).json({ success: false, error: 'Admins cannot delete other Admins or Super Admins.' });
+    }
+    if (requesterRole === 'Super Admin' && targetUser.name === requesterName) {
+      return res.status(403).json({ success: false, error: 'Cannot delete yourself.' });
+    }
+
+    // Perform deletion
+    await User.findByIdAndDelete(req.params.id);
+    await logAction(requesterName, 'Deleted User', `Deleted user ${targetUser.name} (${targetUser.role})`);
     
-    res.status(200).json(result);
+    res.status(200).json({ success: true });
   } catch (error) {
     res.status(500).json({ success: false, error: 'Server Error' });
   }
 };
 
 // GET /api/v1/users/logs/action-history
-const getActionLogs = (req, res) => {
+const getActionLogs = async (req, res) => {
   try {
-    const logs = User.getActionLogs();
+    const logs = await ActionLog.find().sort({ timestamp: -1 });
     res.status(200).json({ success: true, data: logs });
   } catch (error) {
     res.status(500).json({ success: false, error: 'Server Error' });

@@ -1,5 +1,7 @@
+require('dotenv').config();
 const express = require('express');
 const cors = require('cors');
+const connectDB = require('./src/config/db');
 const userRoutes = require('./src/routes/v1/userRoutes');
 const authRoutes = require('./src/routes/v1/authRoutes');
 const momRoutes = require('./src/routes/v1/momRoutes');
@@ -73,7 +75,12 @@ app.get('/', (req, res) => {
 });
 
 // Start server
-app.listen(PORT, () => {
-  console.log(`Server is running on port ${PORT}`);
-  whatsappService.initializeWhatsApp();
-});
+const startServer = async () => {
+  await connectDB();
+  app.listen(PORT, () => {
+    console.log(`Server is running on port ${PORT}`);
+    whatsappService.initializeWhatsApp();
+  });
+};
+
+startServer();
